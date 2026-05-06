@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curious — Shelley Tsui</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__left">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-toggle__icon"></span>
+      </button>
+      <a href="index.html" class="nav__link">← Back</a>
+    </div>
+    <div class="nav__links">
+      <a href="index.html#index" class="nav__link">Index</a>
+      <span class="nav__sep">/</span>
+      <a href="index.html#about" class="nav__link">About</a>
+    </div>
+  </nav>
+
+  <main class="project-page">
+
+    <!-- Hero image -->
+    <div class="project-hero">
+      <img src="images/curious.png" alt="Curious" class="project-hero__img" />
+    </div>
+
+    <!-- Overview -->
+    <section class="project-section project-section--overview">
+      <div class="project-section__label">Overview</div>
+      <div class="project-section__body">
+        <p>Curious is a holding company that builds and acquires software products. As product and design lead, I work across the full portfolio — setting product direction, creating shared design infrastructure, and making sure the work across companies feels coherent without being homogeneous.</p>
+        <p>The challenge isn't any one product. It's building systems that let small teams move fast without accumulating design debt, while keeping each product's identity distinct.</p>
+      </div>
+    </section>
+
+    <hr class="project-divider" />
+
+    <!-- Details row -->
+    <div class="project-details">
+      <div class="project-detail">
+        <span class="project-detail__label">Role</span>
+        <span class="project-detail__value">Product & Design Lead</span>
+      </div>
+      <div class="project-detail">
+        <span class="project-detail__label">Company</span>
+        <span class="project-detail__value">Curious Holdings</span>
+      </div>
+      <div class="project-detail">
+        <span class="project-detail__label">Timeline</span>
+        <span class="project-detail__value">2023–Present</span>
+      </div>
+      <div class="project-detail">
+        <span class="project-detail__label">Scope</span>
+        <span class="project-detail__value">Strategy, Systems, IC Design</span>
+      </div>
+    </div>
+
+    <hr class="project-divider" />
+
+    <!-- Section: Problem -->
+    <section class="project-section">
+      <div class="project-section__label">The Problem</div>
+      <div class="project-section__body">
+        <p>Each product in the portfolio had grown independently. Different component libraries, different visual languages, different ways of thinking about users. The overhead of context-switching between products was slowing teams down, and inconsistency was starting to show up in the products themselves.</p>
+      </div>
+    </section>
+
+    <!-- Full-width image -->
+    <div class="project-image project-image--full">
+      <div class="project-image__placeholder"></div>
+      <p class="project-image__caption">Cross-portfolio design audit, mapping inconsistencies across four products</p>
+    </div>
+
+    <!-- Section: Approach -->
+    <section class="project-section">
+      <div class="project-section__label">Approach</div>
+      <div class="project-section__body">
+        <p>Rather than forcing a single unified system, I built a shared foundation — tokens, primitives, and documentation standards — that each product could extend. Teams kept their product-specific components but shared the underlying layer.</p>
+        <p>Alongside the system work, I introduced lightweight product rituals: weekly cross-team syncs, a shared roadmap format, and a quarterly review process that keeps portfolio-level priorities visible without creating bureaucracy.</p>
+      </div>
+    </section>
+
+    <!-- Two-up images -->
+    <div class="project-image-grid">
+      <div class="project-image project-image--half">
+        <div class="project-image__placeholder"></div>
+        <p class="project-image__caption">Shared token layer</p>
+      </div>
+      <div class="project-image project-image--half">
+        <div class="project-image__placeholder"></div>
+        <p class="project-image__caption">Component documentation standards</p>
+      </div>
+    </div>
+
+    <!-- Section: Outcome -->
+    <section class="project-section">
+      <div class="project-section__label">Outcome</div>
+      <div class="project-section__body">
+        <p>Design velocity across the portfolio increased noticeably within two quarters. New features that would have required weeks of back-and-forth on patterns now ship with shared primitives and minimal design review needed.</p>
+        <p>More importantly, the products feel related without feeling identical — each has a distinct character that the shared system supports rather than suppresses.</p>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') html.setAttribute('data-theme', 'dark');
+    btn.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
