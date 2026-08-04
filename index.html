@@ -6,7 +6,8 @@
   <title>Shelley Tsui</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Source+Serif+Pro:wght@400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -70,7 +71,7 @@
             </a>
             <div class="project-card__meta">
               <h3 class="project-card__title">Polymer</h3>
-              <p class="project-card__subtitle">Placeholder description — update me.</p>
+              <p class="project-card__subtitle">An applicant tracking system that streamlines the hiring process.</p>
             </div>
           </article>
           <article class="project-card">
@@ -160,7 +161,7 @@
                 <div class="index-item__thumb" style="background-image:url('images/unsent-letters.png')"></div>
               </div>
               <div class="index-item__info">
-                <h3 class="index-item__title">This book is filled with unsent letters</h3>
+                <h3 class="index-item__title">This Book Is Filled With Unsent Letters</h3>
                 <p class="index-item__desc">Compiling letters that were never sent or never had the chance to be.</p>
               </div>
               <button class="pill-btn">Explore</button>
@@ -226,7 +227,7 @@
         </div>
         <div class="about__links">
           <a href="mailto:shelley@curious.vc" class="pill-btn">Email</a>
-          <a href="https://linkedin.com" class="pill-btn" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/shelley-tsui/" class="pill-btn" target="_blank" rel="noopener">LinkedIn</a>
           <a href="#" class="pill-btn">Resume</a>
         </div>
       </section>
@@ -273,6 +274,21 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const itemObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll('.index-item');
+          items.forEach((item, i) => {
+            setTimeout(() => item.classList.add('fade-in'), i * 80);
+          });
+          itemObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    const indexSection = document.querySelector('.index-section');
+    if (indexSection) itemObserver.observe(indexSection);
   </script>
 </body>
 </html>
