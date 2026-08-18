@@ -16,8 +16,8 @@
 
   <header class="bar">
     <nav class="bar__nav">
-      <a href="#index" class="bar__link">Index</a>
       <a href="#top" class="bar__link">Home</a>
+      <a href="#index" class="bar__link">Index</a>
       <a href="#about" class="bar__link">About</a>
     </nav>
     <div class="bar__right">
@@ -30,70 +30,73 @@
   </header>
 
   <main>
+
     <section class="hero">
       <h1 class="hero__text">Shelley Tsui is a product &amp; design lead based in the Pacific Northwest. Currently supporting at Curious.</h1>
     </section>
 
     <div class="sections">
 
-      <!-- Selected work -->
+      <!-- Selected work ─ cards come from content/*.md via build.py -->
       <section class="featured reveal" aria-label="Selected work">
         <div class="marquee">
           <div class="marquee__track" data-loop>
-            <article class="feature">
-              <a href="project.html" class="feature__link">
-                <img class="feature__image" src="images/curious.png" alt="Curious" />
-              </a>
-              <div class="meta">
-                <h2 class="meta__title">Curious</h2>
-                <p class="meta__desc">Holding company building a portfolio of software products.</p>
-              </div>
-            </article>
-            <article class="feature">
-              <a href="project.html" class="feature__link">
-                <img class="feature__image" src="images/buildfire.png" alt="Buildfire" />
-              </a>
-              <div class="meta">
-                <h2 class="meta__title">Buildfire</h2>
-                <p class="meta__desc">No-code mobile app platform for businesses and enterprises.</p>
-              </div>
-            </article>
-            <article class="feature">
-              <a href="project.html" class="feature__link">
-                <img class="feature__image" src="images/uservoice.png" alt="UserVoice" />
-              </a>
-              <div class="meta">
-                <h2 class="meta__title">UserVoice</h2>
-                <p class="meta__desc">Product feedback and customer insights platform.</p>
-              </div>
-            </article>
-            <article class="feature">
-              <a href="project.html" class="feature__link">
-                <img class="feature__image" src="images/polymer.png" alt="Polymer" />
-              </a>
-              <div class="meta">
-                <h2 class="meta__title">Polymer</h2>
-                <p class="meta__desc">An applicant tracking system that streamlines the hiring process.</p>
-              </div>
-            </article>
-            <article class="feature">
-              <a href="project.html" class="feature__link">
-                <img class="feature__image" src="images/convox.png" alt="Convox" />
-              </a>
-              <div class="meta">
-                <h2 class="meta__title">Convox</h2>
-                <p class="meta__desc">Open-source cloud deployment platform built on AWS.</p>
-              </div>
-            </article>
+        <!-- build:featured -->
+          <article class="feature">
+            <a href="curious.html" class="feature__link">
+              <img class="feature__image" src="images/curious.png" alt="Curious" />
+            </a>
+            <div class="meta">
+              <h2 class="meta__title">Curious</h2>
+              <p class="meta__desc">Holding company building a portfolio of software products.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__link">
+              <img class="feature__image" src="images/buildfire.png" alt="Buildfire" />
+            </div>
+            <div class="meta">
+              <h2 class="meta__title">Buildfire</h2>
+              <p class="meta__desc">No-code mobile app platform for businesses and enterprises.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__link">
+              <img class="feature__image" src="images/uservoice.png" alt="UserVoice" />
+            </div>
+            <div class="meta">
+              <h2 class="meta__title">UserVoice</h2>
+              <p class="meta__desc">Product feedback and customer insights platform.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__link">
+              <img class="feature__image" src="images/polymer.png" alt="Polymer" />
+            </div>
+            <div class="meta">
+              <h2 class="meta__title">Polymer</h2>
+              <p class="meta__desc">An applicant tracking system that streamlines the hiring process.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__link">
+              <img class="feature__image" src="images/convox.png" alt="Convox" />
+            </div>
+            <div class="meta">
+              <h2 class="meta__title">Convox</h2>
+              <p class="meta__desc">Open-source cloud deployment platform built on AWS.</p>
+            </div>
+          </article>
+        <!-- /build:featured -->
           </div>
         </div>
       </section>
 
-      <!-- Index -->
+      <!-- Index ─ rows come from content/*.md via build.py -->
       <section id="index" class="index reveal">
+        <!-- build:index -->
         <h2 class="s-title">Index<sup class="s-title__count">8</sup></h2>
         <ul class="index__list">
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -104,10 +107,9 @@
                 <h3 class="index__title">Animal Crossing New Horizons Checklist</h3>
                 <p class="index__desc">Providing Animal Crossing players with means to track their progress.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -118,10 +120,9 @@
                 <h3 class="index__title">Figma Stalker</h3>
                 <p class="index__desc">Recreating the experience of being followed in Figma.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -132,10 +133,9 @@
                 <h3 class="index__title">Chord</h3>
                 <p class="index__desc">Helping those with transient lifestyles to make meaningful connections.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -146,10 +146,9 @@
                 <h3 class="index__title">Microsoft Mixed Reality Dev Days</h3>
                 <p class="index__desc">Designing brand material for Mixed Reality Dev Days, a Microsoft hackathon.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -160,10 +159,9 @@
                 <h3 class="index__title">This Book Is Filled With Unsent Letters</h3>
                 <p class="index__desc">Compiling letters that were never sent or never had the chance to be.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -172,12 +170,11 @@
               </div>
               <div class="index__info">
                 <h3 class="index__title">Antologi</h3>
-                <p class="index__desc">Supporting a startup in Google's Area 120 focused on promoting better async work.</p>
+                <p class="index__desc">Supporting a startup in Google&#x27;s Area 120 focused on promoting better async work.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -188,10 +185,9 @@
                 <h3 class="index__title">Rhododendron Species Botanical Garden</h3>
                 <p class="index__desc">Rebranding the Rhododendron Species Botanical Garden.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
           <li class="index__item">
             <div class="index__row">
               <div class="index__lead">
@@ -202,50 +198,11 @@
                 <h3 class="index__title">Milo Treats</h3>
                 <p class="index__desc">Crafting visual identity for a DTC pet health startup.</p>
               </div>
-              <a href="project.html" class="pill-btn">Explore</a>
+              <span class="pill-btn pill-btn--inert">Explore</span>
             </div>
           </li>
-
         </ul>
-      </section>
-
-      <!-- People ─ PLACEHOLDER COPY: swap the three blockquotes for real quotes -->
-      <section id="people" class="people reveal">
-        <h2 class="s-title s-title--center">People I've been lucky enough to work with<sup class="s-title__count">3</sup></h2>
-        <div class="marquee">
-          <div class="marquee__track" data-loop>
-            <figure class="quote">
-              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
-              <figcaption class="quote__author">
-                <div class="quote__avatar"></div>
-                <div class="quote__who">
-                  <span class="quote__name">Samantha Forster</span>
-                  <span class="quote__role">SVP at Kurnl</span>
-                </div>
-              </figcaption>
-            </figure>
-            <figure class="quote">
-              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
-              <figcaption class="quote__author">
-                <div class="quote__avatar"></div>
-                <div class="quote__who">
-                  <span class="quote__name">Sean Smith</span>
-                  <span class="quote__role">CMO at SimpleTiger</span>
-                </div>
-              </figcaption>
-            </figure>
-            <figure class="quote">
-              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
-              <figcaption class="quote__author">
-                <div class="quote__avatar"></div>
-                <div class="quote__who">
-                  <span class="quote__name">Jessica Gertig</span>
-                  <span class="quote__role">CEO at Polymer</span>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+        <!-- /build:index -->
       </section>
 
       <!-- Companies ─ data-tooltip is the cursor-following hover blurb -->
@@ -309,6 +266,76 @@
         </ul>
       </section>
 
+      <!-- People ─ real quotes still to come; each card needs one.
+           Avatars are empty circles until a headshot is set as background-image. -->
+      <section id="people" class="people reveal">
+        <h2 class="s-title s-title--center">People I've been lucky enough to work with<sup class="s-title__count">6</sup></h2>
+        <div class="marquee">
+          <div class="marquee__track" data-loop>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Nicholas Thoni</span>
+                  <span class="quote__role">CEO at Convox</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Jessica Gertig</span>
+                  <span class="quote__role">CEO at Polymer</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Jennifer Cullem</span>
+                  <span class="quote__role">CEO at UserVoice</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Sean Smith</span>
+                  <span class="quote__role">CMO at SimpleTiger</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Samantha Forster</span>
+                  <span class="quote__role">SVP at Kurnl</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Ayman Habeb</span>
+                  <span class="quote__role">CEO at Buildfire</span>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <!-- About -->
       <section id="about" class="about reveal">
         <div class="about__bio">
@@ -325,18 +352,13 @@
 
     </div>
 
-    <!-- Photo strip -->
-    <div class="marquee strip">
-      <div class="marquee__track" data-loop>
-        <div class="strip__slide" style="background-image:url('images/totoro.png')"></div>
-        <div class="strip__slide" style="background-image:url('images/mei-and-yuna.png')"></div>
-        <div class="strip__slide" style="background-image:url('images/japan-pic.png')"></div>
-        <div class="strip__slide" style="background-image:url('images/blueberries.png')"></div>
-        <div class="strip__slide" style="background-image:url('images/ferry.png')"></div>
-        <div class="strip__slide" style="background-image:url('images/daisy.png')"></div>
-      </div>
-    </div>
   </main>
+
+  <footer class="bar bar--footer">
+    <span>Made with Figma/Claude Code, typeset in Source Serif 4 and Geist.</span>
+    <span><a class="bar__link" href="https://parks.wa.gov/find-parks/state-parks/dash-point-state-park"
+            target="_blank" rel="noopener" aria-label="Dash Point State Park">47.3144&deg; N, 122.4062&deg; W</a></span>
+  </footer>
 
   <script>
     // Live date + time in the top bar, matching the design's 08/18/2026 · 02:10:48PM
@@ -353,7 +375,13 @@
     tick();
     setInterval(tick, 1000);
 
-    // Marquees drift on their own, and hand off to normal horizontal
+    // Frost the bar once the page has scrolled under it.
+    const bar = document.querySelector('.bar');
+    const syncBar = () => bar.classList.toggle('bar--scrolled', scrollY > 8);
+    addEventListener('scroll', syncBar, { passive: true });
+    syncBar();
+
+    // Looping marquees drift on their own, and hand off to normal horizontal
     // scrolling while the pointer is over them (or a card inside has focus).
     // Both modes move the same scrollLeft, so the handoff never jumps.
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -399,13 +427,16 @@
       function frame(now) {
         const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;
         last = now;
+        const speed = parseFloat(getComputedStyle(marquee).getPropertyValue('--marquee-speed')) || 0;
         const paused = hovered || focused || reducedMotion.matches;
 
-        if (paused) {
+        // speed 0 means no drift: follow scrollLeft and just keep it wrapped,
+        // never write to it, so the reader's own scrolling is left alone
+        if (paused || !speed) {
           pos = marquee.scrollLeft;
           if (wrap()) marquee.scrollLeft = pos;
         } else {
-          pos += parseFloat(getComputedStyle(marquee).getPropertyValue('--marquee-speed')) * dt;
+          pos += speed * dt;
           wrap();
           marquee.scrollLeft = pos;
         }

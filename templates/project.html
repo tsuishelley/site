@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Keeping the site out of search results while it is a work in progress.
+       Delete this line to allow indexing. A robots.txt cannot do the job here:
+       crawlers only read it from the host root (tsuishelley.github.io/robots.txt),
+       which this repo does not serve. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <title>{{title}} — Shelley Tsui</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script src="theme.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <nav class="bar__nav">
+      <a href="index.html" class="bar__link">Home</a>
+      <a href="index.html#index" class="bar__link">Index</a>
+      <a href="index.html#about" class="bar__link">About</a>
+    </nav>
+    <div class="bar__right">
+      <span class="bar__clock bar__date" id="clock-date"></span>
+      <span class="bar__clock" id="clock-time"></span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-toggle__icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="project-page">
+{{hero}}
+{{details}}
+{{body}}
+  </main>
+
+  <footer class="bar bar--footer">
+    <span>Made with Figma/Claude Code, typeset in Source Serif 4 and Geist.</span>
+    <span><a class="bar__link" href="https://parks.wa.gov/find-parks/state-parks/dash-point-state-park"
+            target="_blank" rel="noopener" aria-label="Dash Point State Park">47.3144&deg; N, 122.4062&deg; W</a></span>
+  </footer>
+
+  <script>
+    const dateEl = document.getElementById('clock-date');
+    const timeEl = document.getElementById('clock-time');
+    const pad = n => String(n).padStart(2, '0');
+
+    function tick() {
+      const d = new Date();
+      dateEl.textContent = `${pad(d.getMonth() + 1)}/${pad(d.getDate())}/${d.getFullYear()}`;
+      const h = d.getHours();
+      timeEl.textContent = `${pad(h % 12 || 12)}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${h < 12 ? 'AM' : 'PM'}`;
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>

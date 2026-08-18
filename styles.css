@@ -30,6 +30,10 @@
 
   --logo-filter: none;
   --logo-color: var(--color-text);
+
+  --bar-bg: var(--color-bg);
+  --bar-bg-glass: rgba(255, 255, 255, 0.62);
+  --bar-blur: none;
 }
 
 [data-theme="dark"] {
@@ -45,6 +49,8 @@
   /* force the single-fill marks to pure white, whatever their source colour */
   --logo-filter: brightness(0) invert(1);
   --logo-color: #ffffff;
+
+  --bar-bg-glass: rgba(20, 20, 20, 0.6);
 }
 
 [data-theme="dark"] ::selection {
@@ -85,7 +91,36 @@ img {
   justify-content: space-between;
   gap: 24px;
   padding: 0 var(--page-px);
-  background: var(--color-bg);
+  /* frosted once the page moves under it; flat while parked at the top */
+  background: var(--bar-bg);
+  -webkit-backdrop-filter: var(--bar-blur);
+          backdrop-filter: var(--bar-blur);
+  transition: background 0.25s ease, backdrop-filter 0.25s ease;
+}
+
+.bar--scrolled {
+  --bar-bg: var(--bar-bg-glass);
+  --bar-blur: saturate(180%) blur(20px);
+}
+
+/* no blur support: lean on a more opaque plate instead of a see-through bar */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .bar--scrolled { --bar-bg: var(--color-bg); }
+}
+
+/* footer reuses the bar's type and gutters, minus the sticky/glass behaviour */
+.bar--footer {
+  position: static;
+  background: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  font-size: 12px;
+  line-height: normal;
+  color: var(--color-text-muted);
+}
+
+.bar--footer span {
+  white-space: nowrap;
 }
 
 .bar__nav,
@@ -165,7 +200,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: var(--section-gap);
-  padding: 55px var(--page-px) 0;
+  padding: 55px var(--page-px) var(--section-gap);
 }
 
 /* scroll offset so the sticky bar doesn't overlap headings */
@@ -226,6 +261,15 @@ img {
   background: var(--color-pill-bg-hover);
 }
 
+/* placeholder pill: keeps the shape without claiming to be clickable */
+.pill-btn--inert {
+  cursor: default;
+}
+
+.pill-btn--inert:hover {
+  background: var(--color-pill-bg);
+}
+
 /* ─── Marquee ─────────────────────────────────────────── */
 /* A full-bleed row that auto-scrolls when idle and becomes a plain
    horizontal scroller while hovered/focused. Both modes drive the same
@@ -249,9 +293,11 @@ img {
   --marquee-gap: 20px;
   --marquee-speed: 60; /* px per second, read by JS */
   --marquee-fade: 120px;
+  --fade-l: var(--marquee-fade);
+  --fade-r: var(--marquee-fade);
 
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
-          mask-image: linear-gradient(to right, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent);
 }
 
 .marquee::-webkit-scrollbar {
@@ -262,7 +308,7 @@ img {
   display: flex;
   align-items: stretch;
   width: max-content;
-  /* before JS clones the set, keep the first item on the page gutter */
+  /* keeps the first item on the page gutter until JS clones the set */
   padding-left: var(--page-px);
 }
 
@@ -275,17 +321,13 @@ img {
   flex-shrink: 0;
 }
 
-.people .marquee {
-  --marquee-speed: 55;
-}
-
 /* ─── Featured work ───────────────────────────────────── */
 
 .feature {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 608px;
+  width: 720px;
   flex-shrink: 0;
 }
 
@@ -355,7 +397,7 @@ img {
 
 .index__row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 56px;
   padding: 15px 0;
 }
@@ -375,8 +417,9 @@ img {
 }
 
 .index__thumb {
-  width: 136px;
-  height: 82px;
+  /* keeps the 136:82 proportion the thumbnails were cropped to */
+  width: 180px;
+  height: 109px;
   border-radius: var(--radius);
   background-color: var(--color-placeholder);
   background-size: cover;
@@ -389,7 +432,6 @@ img {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 5px;
 }
 
@@ -409,20 +451,27 @@ img {
 
 /* ─── People / testimonials ───────────────────────────── */
 
-.people,
-.companies {
+.people {
   display: flex;
   flex-direction: column;
   gap: 44px;
 }
 
+.featured .marquee {
+  --marquee-speed: 40; /* slower than the quotes: the cards are much larger */
+}
+
+.people .marquee {
+  --marquee-speed: 55;
+}
+
 .quote {
   display: flex;
   flex-direction: column;
-  gap: 59px;
+  gap: 40px;
   width: 506px;
   flex-shrink: 0;
-  padding: 30px;
+  padding: 15px;
   border: 1px solid var(--color-divider);
   border-radius: var(--radius);
 }
@@ -434,6 +483,7 @@ img {
   color: var(--color-text);
 }
 
+/* pins the author to the bottom so cards line up on uneven quote lengths */
 .quote__author {
   display: flex;
   align-items: center;
@@ -471,6 +521,14 @@ img {
 
 /* ─── Companies ───────────────────────────────────────── */
 
+.companies {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+/* ─── Companies ───────────────────────────────────────── */
+
 .logo-grid {
   list-style: none;
   display: grid;
@@ -486,6 +544,12 @@ img {
   aspect-ratio: 230 / 131.826;
   border-radius: var(--radius);
   background: var(--color-tile);
+  transition: background 0.2s ease;
+}
+
+/* drop the plate on hover so the mark sits straight on the page */
+.logo-tile:hover {
+  background: transparent;
 }
 
 .logo-lockup {
@@ -599,30 +663,6 @@ img {
   flex-wrap: wrap;
 }
 
-/* ─── Photo strip ─────────────────────────────────────── */
-
-.strip {
-  /* already outside the padded container, so it needs no bleed */
-  margin: var(--section-gap) 0 0;
-  padding-bottom: 43px;
-  --marquee-gap: 29px;
-  --marquee-speed: 69;
-}
-
-.strip .marquee__track {
-  padding-left: 0;
-}
-
-.strip__slide {
-  width: 269px;
-  height: 182px;
-  border-radius: var(--radius);
-  flex-shrink: 0;
-  background-color: var(--color-placeholder);
-  background-size: cover;
-  background-position: center;
-}
-
 /* ─── Scroll reveal ───────────────────────────────────── */
 
 .reveal {
@@ -640,7 +680,6 @@ img {
   html { scroll-behavior: auto; }
   .reveal,
   .index__item { opacity: 1; transform: none; transition: none; }
-  /* .marquee auto-scroll is disabled in JS; it stays hand-scrollable */
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
@@ -660,11 +699,7 @@ img {
   }
 
   .feature {
-    width: 520px;
-  }
-
-  .quote {
-    width: 440px;
+    width: 620px;
   }
 
   .index__row {
@@ -687,16 +722,15 @@ img {
   }
 
   .feature {
-    width: 72vw;
-  }
-
-  .quote {
-    width: 76vw;
-    gap: 36px;
+    width: 80vw;
   }
 
   .logo-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .quote {
+    width: 440px;
   }
 
   .index__row {
@@ -728,6 +762,20 @@ img {
     font-size: 11px;
   }
 
+  .bar--footer {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    font-size: 11px;
+  }
+
+  .bar--footer span {
+    white-space: normal;
+  }
+
   /* the date is the first thing to go when the bar gets tight */
   .bar__date {
     display: none;
@@ -746,11 +794,7 @@ img {
   }
 
   .feature {
-    width: 82vw;
-  }
-
-  .quote {
-    width: 84vw;
+    width: 88vw;
   }
 
   .s-title {
@@ -762,9 +806,12 @@ img {
     gap: 12px;
   }
 
+  .quote {
+    width: 84vw;
+  }
+
   .index__row {
     gap: 20px;
-    align-items: flex-start;
   }
 
   .index__lead {
@@ -789,10 +836,5 @@ img {
 
   .marquee {
     --marquee-fade: 48px;
-  }
-
-  .strip__slide {
-    width: 200px;
-    height: 135px;
   }
 }
