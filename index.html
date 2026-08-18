@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Keeping the site out of search results while it is a work in progress.
+       Delete this line to allow indexing. A robots.txt cannot do the job here:
+       crawlers only read it from the host root (tsuishelley.github.io/robots.txt),
+       which this repo does not serve. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
   <title>Shelley Tsui</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -210,7 +215,7 @@
 
       <!-- People ─ PLACEHOLDER COPY: swap the three blockquotes for real quotes -->
       <section id="people" class="people reveal">
-        <h2 class="s-title s-title--center">People I've had the pleasure of working with<sup class="s-title__count">3</sup></h2>
+        <h2 class="s-title s-title--center">People I've been lucky enough to work with<sup class="s-title__count">3</sup></h2>
         <div class="marquee">
           <div class="marquee__track" data-loop>
             <figure class="quote">
@@ -250,7 +255,7 @@
       <!-- Companies ─ data-tooltip is the cursor-following hover blurb.
            Three still read "TODO: describe this work" (Amazon, Bolt, PSL). -->
       <section id="companies" class="companies reveal">
-        <h2 class="s-title s-title--center">Companies I've had the pleasure of working with<sup class="s-title__count">10</sup></h2>
+        <h2 class="s-title s-title--center">Companies I've been lucky enough to work with<sup class="s-title__count">10</sup></h2>
         <ul class="logo-grid">
           <li class="logo-tile" data-tooltip="Helping support in brand, product, and strategy when it comes to leadership">
             <div class="logo-lockup logo--buildfire">
