@@ -541,7 +541,9 @@ img {
   top: 0;
   left: 0;
   z-index: 100;
-  max-width: 243px;
+  /* 260px is the narrowest width at which every blurb still fits on two
+     lines; 272 leaves a little headroom. Widen if the copy gets longer. */
+  max-width: min(272px, calc(100vw - 24px));
   padding: 14px 16px;
   border-radius: var(--radius);
   background: var(--color-text);
