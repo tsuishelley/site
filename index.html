@@ -6,224 +6,316 @@
   <title>Shelley Tsui</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Source+Serif+Pro:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
 </head>
-<body>
-  <nav class="nav">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      <span class="theme-toggle__icon"></span>
-    </button>
-    <div class="nav__links">
-      <a href="#index" class="nav__link">Index</a>
-      <span class="nav__sep">/</span>
-      <a href="#about" class="nav__link">About</a>
+<body id="top">
+
+  <header class="bar">
+    <nav class="bar__nav">
+      <a href="#index" class="bar__link">Index</a>
+      <a href="#top" class="bar__link">Home</a>
+      <a href="#about" class="bar__link">About</a>
+    </nav>
+    <div class="bar__right">
+      <span class="bar__clock bar__date" id="clock-date"></span>
+      <span class="bar__clock" id="clock-time"></span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-toggle__icon"></span>
+      </button>
     </div>
-  </nav>
+  </header>
 
   <main>
     <section class="hero">
-      <h1 class="hero__text">Hi, I'm Shelley. I'm based in rainy Seattle and work at the intersection of product, design, and AI.</h1>
+      <h1 class="hero__text">Shelley Tsui is a product &amp; design lead based in the Pacific Northwest. Currently supporting at Curious.</h1>
     </section>
 
     <div class="sections">
 
-      <!-- Selected Projects -->
-      <section id="selected-projects" class="selected-projects reveal">
-        <div class="selected-projects__header">
-          <div class="section-title">
-            <span class="section-title__label">Selected Projects<sup class="section-title__count">5</sup></span>
+      <!-- Selected work -->
+      <section class="featured reveal" aria-label="Selected work">
+        <div class="marquee">
+          <div class="marquee__track" data-loop>
+            <article class="feature">
+              <a href="project.html" class="feature__link">
+                <img class="feature__image" src="images/curious.png" alt="Curious" />
+              </a>
+              <div class="meta">
+                <h2 class="meta__title">Curious</h2>
+                <p class="meta__desc">Holding company building a portfolio of software products.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <a href="project.html" class="feature__link">
+                <img class="feature__image" src="images/buildfire.png" alt="Buildfire" />
+              </a>
+              <div class="meta">
+                <h2 class="meta__title">Buildfire</h2>
+                <p class="meta__desc">No-code mobile app platform for businesses and enterprises.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <a href="project.html" class="feature__link">
+                <img class="feature__image" src="images/uservoice.png" alt="UserVoice" />
+              </a>
+              <div class="meta">
+                <h2 class="meta__title">UserVoice</h2>
+                <p class="meta__desc">Product feedback and customer insights platform.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <a href="project.html" class="feature__link">
+                <img class="feature__image" src="images/polymer.png" alt="Polymer" />
+              </a>
+              <div class="meta">
+                <h2 class="meta__title">Polymer</h2>
+                <p class="meta__desc">An applicant tracking system that streamlines the hiring process.</p>
+              </div>
+            </article>
+            <article class="feature">
+              <a href="project.html" class="feature__link">
+                <img class="feature__image" src="images/convox.png" alt="Convox" />
+              </a>
+              <div class="meta">
+                <h2 class="meta__title">Convox</h2>
+                <p class="meta__desc">Open-source cloud deployment platform built on AWS.</p>
+              </div>
+            </article>
           </div>
-          <p class="selected-projects__desc">I work across product, design, and brand and play with code when it matters.</p>
-        </div>
-        <div class="selected-projects__list">
-          <article class="project-card">
-            <a href="project.html" class="project-card__link">
-              <img class="project-card__image" src="images/curious.png" alt="Curious" />
-            </a>
-            <div class="project-card__meta">
-              <h3 class="project-card__title">Curious</h3>
-              <p class="project-card__subtitle">Holding company building a portfolio of software products.</p>
-            </div>
-          </article>
-          <article class="project-card">
-            <a href="project.html" class="project-card__link">
-              <img class="project-card__image" src="images/buildfire.png" alt="Buildfire" />
-            </a>
-            <div class="project-card__meta">
-              <h3 class="project-card__title">Buildfire</h3>
-              <p class="project-card__subtitle">No-code mobile app platform for businesses and enterprises.</p>
-            </div>
-          </article>
-          <article class="project-card">
-            <a href="project.html" class="project-card__link">
-              <img class="project-card__image" src="images/uservoice.png" alt="UserVoice" />
-            </a>
-            <div class="project-card__meta">
-              <h3 class="project-card__title">Uservoice</h3>
-              <p class="project-card__subtitle">Product feedback and customer insights platform.</p>
-            </div>
-          </article>
-          <article class="project-card">
-            <a href="project.html" class="project-card__link">
-              <img class="project-card__image" src="images/polymer.png" alt="Polymer" />
-            </a>
-            <div class="project-card__meta">
-              <h3 class="project-card__title">Polymer</h3>
-              <p class="project-card__subtitle">An applicant tracking system that streamlines the hiring process.</p>
-            </div>
-          </article>
-          <article class="project-card">
-            <a href="project.html" class="project-card__link">
-              <img class="project-card__image" src="images/convox.png" alt="Convox" />
-            </a>
-            <div class="project-card__meta">
-              <h3 class="project-card__title">Convox</h3>
-              <p class="project-card__subtitle">Open-source cloud deployment platform built on AWS.</p>
-            </div>
-          </article>
         </div>
       </section>
 
       <!-- Index -->
-      <section id="index" class="index-section reveal">
-        <div class="section-title">
-          <span class="section-title__label">Index<sup class="section-title__count">8</sup></span>
+      <section id="index" class="index reveal">
+        <h2 class="s-title">Index<sup class="s-title__count">8</sup></h2>
+        <ul class="index__list">
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">01</span>
+                <div class="index__thumb" style="background-image:url('images/acnh.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Animal Crossing New Horizons Checklist</h3>
+                <p class="index__desc">Providing Animal Crossing players with means to track their progress.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">02</span>
+                <div class="index__thumb" style="background-image:url('images/figma%20stalker.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Figma Stalker</h3>
+                <p class="index__desc">Recreating the experience of being followed in Figma.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">03</span>
+                <div class="index__thumb" style="background-image:url('images/chord.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Chord</h3>
+                <p class="index__desc">Helping those with transient lifestyles to make meaningful connections.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">04</span>
+                <div class="index__thumb" style="background-image:url('images/mrdd.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Microsoft Mixed Reality Dev Days</h3>
+                <p class="index__desc">Designing brand material for Mixed Reality Dev Days, a Microsoft hackathon.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">05</span>
+                <div class="index__thumb" style="background-image:url('images/unsent-letters.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">This Book Is Filled With Unsent Letters</h3>
+                <p class="index__desc">Compiling letters that were never sent or never had the chance to be.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">06</span>
+                <div class="index__thumb" style="background-image:url('images/antologi.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Antologi</h3>
+                <p class="index__desc">Supporting a startup in Google's Area 120 focused on promoting better async work.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">07</span>
+                <div class="index__thumb" style="background-image:url('images/rsbg.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Rhododendron Species Botanical Garden</h3>
+                <p class="index__desc">Rebranding the Rhododendron Species Botanical Garden.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+          <li class="index__item">
+            <div class="index__row">
+              <div class="index__lead">
+                <span class="index__num">08</span>
+                <div class="index__thumb" style="background-image:url('images/milo.png')"></div>
+              </div>
+              <div class="index__info">
+                <h3 class="index__title">Milo Treats</h3>
+                <p class="index__desc">Crafting visual identity for a DTC pet health startup.</p>
+              </div>
+              <a href="project.html" class="pill-btn">Read more</a>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- People ─ PLACEHOLDER COPY: swap the three blockquotes for real quotes -->
+      <section id="people" class="people reveal">
+        <h2 class="s-title s-title--center">People I've had the pleasure of working with<sup class="s-title__count">3</sup></h2>
+        <div class="marquee">
+          <div class="marquee__track" data-loop>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Samantha Forster</span>
+                  <span class="quote__role">SVP at Kurnl</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Sean Smith</span>
+                  <span class="quote__role">CMO at SimpleTiger</span>
+                </div>
+              </figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote class="quote__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae turpis fringilla, aliquam ante vitae, vehicula tellus. Nunc scelerisque risus et leo imperdiet bibendum. Vivamus tristique, turpis nec facilisis consectetur, arcu nulla vestibulum enim, at vulputate nunc eros sit amet sem. Sed tempus laoreet nisl, id dapibus neque maximus vel.</blockquote>
+              <figcaption class="quote__author">
+                <div class="quote__avatar"></div>
+                <div class="quote__who">
+                  <span class="quote__name">Jessica Gertig</span>
+                  <span class="quote__role">CEO at Polymer</span>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
         </div>
-        <div class="index-list">
+      </section>
 
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">01</span>
-                <div class="index-item__thumb" style="background-image:url('images/acnh.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Animal Crossing New Horizons Checklist</h3>
-                <p class="index-item__desc">Providing Animal Crossing players with means to track their progress.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+      <!-- Companies ─ data-tooltip is the cursor-following hover blurb.
+           Three still read "TODO: describe this work" (Amazon, Bolt, PSL). -->
+      <section id="companies" class="companies reveal">
+        <h2 class="s-title s-title--center">Companies I've had the pleasure of working with<sup class="s-title__count">10</sup></h2>
+        <ul class="logo-grid">
+          <li class="logo-tile" data-tooltip="Helping support in brand, product, and strategy when it comes to leadership">
+            <div class="logo-lockup logo--buildfire">
+              <img src="images/logos/buildfire-mark.svg" alt="" />
+              <span class="logo-word">Buildfire</span>
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">02</span>
-                <div class="index-item__thumb" style="background-image:url('images/figma%20stalker.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Figma Stalker</h3>
-                <p class="index-item__desc">Recreating the experience of being followed in Figma.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="Product and design work across their feedback and customer insights platform">
+            <div class="logo-lockup logo--uservoice">
+              <img src="images/logos/uservoice.svg" alt="UserVoice" />
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">03</span>
-                <div class="index-item__thumb" style="background-image:url('images/chord.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Chord</h3>
-                <p class="index-item__desc">Helping those with transient lifestyles to make meaningful connections.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="Design support for Antologi, a startup inside Google's Area 120 focused on async work">
+            <div class="logo-lockup logo--google">
+              <img src="images/logos/google.svg" alt="Google" />
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">04</span>
-                <div class="index-item__thumb" style="background-image:url('images/mrdd.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Microsoft Mixed Reality Dev Days</h3>
-                <p class="index-item__desc">Designing brand material for Mixed Reality Dev Days, a Microsoft hackathon.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="Brand material for Mixed Reality Dev Days, a Microsoft hackathon">
+            <div class="logo-lockup logo--microsoft">
+              <img src="images/logos/microsoft-tile.svg" alt="Microsoft" />
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">05</span>
-                <div class="index-item__thumb" style="background-image:url('images/unsent-letters.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">This Book Is Filled With Unsent Letters</h3>
-                <p class="index-item__desc">Compiling letters that were never sent or never had the chance to be.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="TODO: describe this work">
+            <div class="logo-lockup logo--amazon">
+              <img src="images/logos/amazon.svg" alt="Amazon" />
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">06</span>
-                <div class="index-item__thumb" style="background-image:url('images/antologi.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Antologi</h3>
-                <p class="index-item__desc">Supporting a startup in Google's Area 120 focused on promoting better async work.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="Product and design for an open-source cloud deployment platform built on AWS">
+            <div class="logo-lockup logo--convox">
+              <img class="logo-mark" src="images/logos/convox-mark.svg" alt="" />
+              <img class="logo-type" src="images/logos/convox-word.svg" alt="Convox" />
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">07</span>
-                <div class="index-item__thumb" style="background-image:url('images/rsbg.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Rhododendren Species Botanical Garden</h3>
-                <p class="index-item__desc">Rebranding the Rhodendron Species Botanical Garden.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="Product and design for an applicant tracking system that streamlines hiring">
+            <div class="logo-lockup logo--polymer">
+              <img src="images/logos/polymer-mark.svg" alt="" />
+              <span class="logo-word">Polymer</span>
             </div>
-          </div>
-
-          <div class="index-item">
-            <hr class="index-item__divider" />
-            <div class="index-item__row">
-              <div class="index-item__left">
-                <span class="index-item__num">08</span>
-                <div class="index-item__thumb" style="background-image:url('images/milo.png')"></div>
-              </div>
-              <div class="index-item__info">
-                <h3 class="index-item__title">Milo Treats</h3>
-                <p class="index-item__desc">Crafting visual identity for a DTC pet health startup.</p>
-              </div>
-              <button class="pill-btn">Explore</button>
+          </li>
+          <li class="logo-tile" data-tooltip="TODO: describe this work">
+            <div class="logo-lockup logo--bolt">
+              <img src="images/logos/bolt-tile.svg" alt="Bolt" />
             </div>
-          </div>
-
-          <hr class="index-item__divider" />
-        </div>
+          </li>
+          <li class="logo-tile" data-tooltip="Leading product and design across a portfolio of software companies">
+            <div class="logo-lockup logo--curious">
+              <img class="logo-mark" src="images/logos/curious-mark.svg" alt="" />
+              <img class="logo-type" src="images/logos/curious-word.svg" alt="Curious" />
+            </div>
+          </li>
+          <li class="logo-tile" data-tooltip="TODO: describe this work">
+            <div class="logo-lockup logo--psl">
+              <img src="images/logos/psl-tile.svg" alt="PSL" />
+            </div>
+          </li>
+        </ul>
       </section>
 
       <!-- About -->
       <section id="about" class="about reveal">
         <div class="about__bio">
-          <p>I'm a product and design lead that works at the intersection of strategy, systems, and craft. Right now I'm at Curious, a holding company, where I lead product and design across a portfolio of software companies.</p>
+          <p>I'm a product and design lead that works at the intersection of strategy, systems, and craft. Right now I'm at Curious where I lead product and design across a portfolio of software companies.</p>
           <p>I care a lot about making things feel considered. Not precious, just intentional. Whether it's a design system, a product flow, or a website, I want the work to have a point of view.</p>
           <p>Outside of work, I'm learning guitar, gardening, and spending time with my two dogs Mei and Yuna along with a very opinionated cat named Totoro (our house is a zoo). My husband Christian and I are slowly making our house feel like ours, one backyard project at a time.</p>
-          <p>I'm based in Seattle and work remotely. If you want to talk about a project, a role, or just compare notes on something you're building I'd love to hear from you.</p>
+          <p>I'm based in the Pacific Northwest and work remotely. If you want to talk about a project, a role, or just compare notes on something you're building I'd love to hear from you.</p>
         </div>
         <div class="about__links">
           <a href="mailto:shelley@curious.vc" class="pill-btn">Email</a>
@@ -232,40 +324,156 @@
         </div>
       </section>
 
-      <!-- Photo carousel -->
-      <div class="photo-carousel">
-        <div class="photo-carousel__track">
-          <div class="photo-carousel__slide" style="background-image:url('images/totoro.png')"></div>
-          <div class="photo-carousel__slide" style="background-image:url('images/mei-and-yuna.png')"></div>
-          <div class="photo-carousel__slide" style="background-image:url('images/japan-pic.png')"></div>
-          <div class="photo-carousel__slide" style="background-image:url('images/blueberries.png')"></div>
-          <div class="photo-carousel__slide" style="background-image:url('images/ferry.png')"></div>
-          <div class="photo-carousel__slide" style="background-image:url('images/daisy.png')"></div>
-          <!-- duplicates for seamless loop -->
-          <div class="photo-carousel__slide" aria-hidden="true" style="background-image:url('images/totoro.png')"></div>
-          <div class="photo-carousel__slide" aria-hidden="true" style="background-image:url('images/mei-and-yuna.png')"></div>
-          <div class="photo-carousel__slide" aria-hidden="true" style="background-image:url('images/japan-pic.png')"></div>
-          <div class="photo-carousel__slide" aria-hidden="true" style="background-image:url('images/blueberries.png')"></div>
-          <div class="photo-carousel__slide" aria-hidden="true" style="background-image:url('images/ferry.png')"></div>
-          <div class="photo-carousel__slide" aria-hidden="true" style="background-image:url('images/daisy.png')"></div>
-        </div>
-      </div>
+    </div>
 
+    <!-- Photo strip -->
+    <div class="marquee strip">
+      <div class="marquee__track" data-loop>
+        <div class="strip__slide" style="background-image:url('images/totoro.png')"></div>
+        <div class="strip__slide" style="background-image:url('images/mei-and-yuna.png')"></div>
+        <div class="strip__slide" style="background-image:url('images/japan-pic.png')"></div>
+        <div class="strip__slide" style="background-image:url('images/blueberries.png')"></div>
+        <div class="strip__slide" style="background-image:url('images/ferry.png')"></div>
+        <div class="strip__slide" style="background-image:url('images/daisy.png')"></div>
+      </div>
     </div>
   </main>
+
   <script>
-    const html = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') html.setAttribute('data-theme', 'dark');
-    btn.addEventListener('click', () => {
-      const isDark = html.getAttribute('data-theme') === 'dark';
-      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    // Live date + time in the top bar, matching the design's 08/18/2026 · 02:10:48PM
+    const dateEl = document.getElementById('clock-date');
+    const timeEl = document.getElementById('clock-time');
+    const pad = n => String(n).padStart(2, '0');
+
+    function tick() {
+      const d = new Date();
+      dateEl.textContent = `${pad(d.getMonth() + 1)}/${pad(d.getDate())}/${d.getFullYear()}`;
+      const h = d.getHours();
+      timeEl.textContent = `${pad(h % 12 || 12)}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${h < 12 ? 'AM' : 'PM'}`;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // Marquees drift on their own, and hand off to normal horizontal
+    // scrolling while the pointer is over them (or a card inside has focus).
+    // Both modes move the same scrollLeft, so the handoff never jumps.
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+    document.querySelectorAll('.marquee').forEach(marquee => {
+      const track = marquee.querySelector('.marquee__track[data-loop]');
+      if (!track) return;
+
+      const originals = [...track.children];
+      let setWidth = 0;
+      let pos = 0;
+      let hovered = false;
+      let focused = false;
+      let resumeTimer = null;
+
+      function clone() {
+        originals.forEach(node => {
+          const copy = node.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
+          track.append(copy);
+        });
+      }
+
+      function build() {
+        [...track.children].slice(originals.length).forEach(node => node.remove());
+        marquee.classList.add('marquee--ready');
+        setWidth = track.scrollWidth;
+        // enough copies that the middle set always has a full screen on
+        // either side of it, so wrapping by one set is never visible
+        while (track.scrollWidth < setWidth * 2 + marquee.clientWidth) clone();
+        pos = setWidth;
+        marquee.scrollLeft = pos;
+      }
+
+      function wrap() {
+        if (pos >= setWidth * 2) { pos -= setWidth; return true; }
+        if (pos < setWidth) { pos += setWidth; return true; }
+        return false;
+      }
+
+      let last = 0;
+      function frame(now) {
+        const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;
+        last = now;
+        const paused = hovered || focused || reducedMotion.matches;
+
+        if (paused) {
+          pos = marquee.scrollLeft;
+          if (wrap()) marquee.scrollLeft = pos;
+        } else {
+          pos += parseFloat(getComputedStyle(marquee).getPropertyValue('--marquee-speed')) * dt;
+          wrap();
+          marquee.scrollLeft = pos;
+        }
+        requestAnimationFrame(frame);
+      }
+
+      marquee.addEventListener('pointerenter', () => {
+        clearTimeout(resumeTimer);
+        hovered = true;
+      });
+      marquee.addEventListener('pointerleave', e => {
+        clearTimeout(resumeTimer);
+        // let touch momentum settle before taking the scroll back over
+        const delay = e.pointerType === 'touch' ? 1200 : 0;
+        resumeTimer = setTimeout(() => { hovered = false; }, delay);
+      });
+      marquee.addEventListener('focusin', () => { focused = true; });
+      marquee.addEventListener('focusout', () => { focused = false; });
+
+      let resizeTimer = null;
+      addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(build, 200);
+      });
+
+      build();
+      requestAnimationFrame(frame);
     });
 
+    // One tooltip element, moved to the cursor while a company tile is hovered.
+    const tip = document.createElement('div');
+    tip.className = 'tooltip';
+    tip.setAttribute('role', 'tooltip');
+    document.body.append(tip);
+
+    function placeTip(e) {
+      const edge = 12;
+      const { width, height } = tip.getBoundingClientRect();
+      // keep it on screen horizontally, and drop it below the cursor when
+      // there isn't room for it above
+      const x = Math.min(Math.max(e.clientX, width / 2 + edge), innerWidth - width / 2 - edge);
+      tip.classList.toggle('tooltip--flip', e.clientY - height - 14 < edge);
+      tip.style.left = `${x}px`;
+      tip.style.top = `${e.clientY}px`;
+    }
+
+    const hideTip = () => tip.classList.remove('tooltip--visible');
+
+    document.querySelectorAll('.logo-tile[data-tooltip]').forEach(tile => {
+      tile.addEventListener('pointerenter', e => {
+        if (e.pointerType === 'touch') return;
+        tip.textContent = tile.dataset.tooltip;
+        placeTip(e);
+        tip.classList.add('tooltip--visible');
+      });
+      tile.addEventListener('pointermove', placeTip);
+      tile.addEventListener('pointerleave', hideTip);
+    });
+
+    // belt and braces: a tile can lose the pointer without a leave event
+    // (cursor exits the window, page scrolls out from under it)
+    addEventListener('scroll', hideTip, { passive: true });
+    addEventListener('blur', hideTip);
+    document.addEventListener('pointerleave', hideTip);
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('reveal--visible');
           observer.unobserve(entry.target);
@@ -278,8 +486,7 @@
     const itemObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const items = entry.target.querySelectorAll('.index-item');
-          items.forEach((item, i) => {
+          entry.target.querySelectorAll('.index__item').forEach((item, i) => {
             setTimeout(() => item.classList.add('fade-in'), i * 80);
           });
           itemObserver.unobserve(entry.target);
@@ -287,7 +494,7 @@
       });
     }, { threshold: 0.05 });
 
-    const indexSection = document.querySelector('.index-section');
+    const indexSection = document.querySelector('.index');
     if (indexSection) itemObserver.observe(indexSection);
   </script>
 </body>

@@ -50,7 +50,7 @@
 .project-hero {
   width: 100%;
   margin-bottom: 80px;
-  border-radius: 20px;
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
@@ -143,7 +143,7 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   background: var(--color-placeholder);
-  border-radius: 16px;
+  border-radius: var(--radius);
   margin-bottom: 12px;
 }
 
