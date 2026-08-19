@@ -402,49 +402,6 @@ img {
   padding: 15px 0;
 }
 
-.index__lead {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  flex-shrink: 0;
-}
-
-.index__num {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-text);
-  flex-shrink: 0;
-}
-
-.index__thumb {
-  /* keeps the 136:82 proportion the thumbnails were cropped to */
-  position: relative;
-  width: 240px;
-  height: 145px;
-  border-radius: var(--radius);
-  background-color: var(--color-placeholder);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-/* The image lives on its own layer so the blur can be clipped. Blurring the
-   thumb itself would feather its rounded edges instead of its contents; the
-   slight scale pushes the soft edge out past the clip. */
-.index__thumb-img {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: blur(5px);
-  transform: scale(1.12);
-  transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.index__thumb:hover .index__thumb-img {
-  filter: blur(0);
-  transform: scale(1);
-}
-
 .index__info {
   flex: 1 0 0;
   min-width: 0;
@@ -687,7 +644,6 @@ img {
   html { scroll-behavior: auto; }
   .reveal,
   .index__item { opacity: 1; transform: none; transition: none; }
-  .index__thumb-img { transition: none; }
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
@@ -735,10 +691,6 @@ img {
 
   .index__row {
     gap: 32px;
-  }
-
-  .index__lead {
-    gap: 20px;
   }
 
   .about__bio {
@@ -808,14 +760,6 @@ img {
 
   .index__row {
     gap: 20px;
-  }
-
-  .index__lead {
-    gap: 14px;
-  }
-
-  .index__thumb {
-    display: none;
   }
 
   .index__info {
