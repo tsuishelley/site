@@ -12,7 +12,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <!-- The SVG recolours itself with the OS theme and stays crisp at any size;
+       the PNG pair is the fallback for browsers that will not take an SVG
+       favicon, picked by the same prefers-color-scheme query. -->
+  <link rel="icon" type="image/png" href="images/favicon-light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="images/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="project.css" />
   <script src="theme.js"></script>

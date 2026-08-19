@@ -18,6 +18,7 @@
   --color-placeholder: #d9d9d9;
   --color-divider: rgba(48, 48, 48, 0.15);
   --color-tile: #f2efea;
+  --color-rain: rgba(48, 48, 48, 0.6);
 
   --font: 'Geist', sans-serif;
   --font-serif: 'Source Serif 4', 'Source Serif Pro', serif;
@@ -45,6 +46,7 @@
   --color-placeholder: #2a2a2a;
   --color-divider: rgba(230, 230, 230, 0.12);
   --color-tile: rgba(230, 230, 230, 0.05);
+  --color-rain: rgba(230, 230, 230, 0.34);
 
   /* force the single-fill marks to pure white, whatever their source colour */
   --logo-filter: brightness(0) invert(1);
@@ -182,7 +184,7 @@ img {
 /* ─── Hero ────────────────────────────────────────────── */
 
 .hero {
-  padding: 200px var(--page-px) 0;
+  padding: 75px var(--page-px) 0;
 }
 
 .hero__text {
@@ -424,6 +426,73 @@ img {
   color: var(--color-text-muted);
 }
 
+/* keeps the pill from resizing as the label swaps Expand <-> Collapse */
+.index__toggle {
+  min-width: 104px;
+}
+
+/* ─── Index drawer ────────────────────────────────────── */
+/* Animating grid-template-rows from 0fr to 1fr opens the panel to whatever
+   height its contents actually need, so nothing here guesses a max-height. */
+
+.index__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.index__item--open .index__panel {
+  grid-template-rows: 1fr;
+}
+
+.index__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.index__carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding-bottom: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.index__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* fixed height, natural width: the shots stay uncropped whatever their shape.
+   min-width holds a tile's worth of space while a lazy image is still loading */
+.index__shot {
+  height: 180px;
+  width: auto;
+  min-width: 140px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: var(--color-placeholder);
+  scroll-snap-align: start;
+}
+
+.index__more {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-divider);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.index__more:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
 /* ─── People / testimonials ───────────────────────────── */
 
 .people {
@@ -447,7 +516,7 @@ img {
   width: 506px;
   flex-shrink: 0;
   padding: 15px;
-  border: 1px solid var(--color-divider);
+  background: var(--color-tile);
   border-radius: var(--radius);
 }
 
@@ -562,6 +631,57 @@ img {
 
 .logo--psl img { width: 100cqw; height: 57.316cqw; }
 
+/* ─── Rain ────────────────────────────────────────────── */
+/* Hovering "rainy Seattle" in the hero drizzles over the page. Decorative
+   only: the layer is inert to the pointer and is never built at all when
+   the reader has asked for reduced motion. */
+
+.rain-trigger {
+  cursor: default;
+  /* the faint rule is what invites the hover; delete it to hide the easter
+     egg completely, the effect itself keeps working either way */
+  border-bottom: 1px dotted var(--color-text-muted);
+  transition: border-color 0.2s ease;
+}
+
+.rain-trigger:hover {
+  border-bottom-color: var(--color-text);
+}
+
+.rain {
+  position: fixed;
+  inset: 0;
+  /* over the page, under the bar (10) and the tooltip (100) */
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+
+.rain--visible {
+  opacity: 1;
+}
+
+/* every drop is one composited transform: no layout or paint per frame */
+.rain__drop {
+  position: absolute;
+  top: 0;
+  left: var(--x);
+  width: 1px;
+  height: var(--len);
+  border-radius: 1px;
+  background: linear-gradient(to bottom, transparent, var(--color-rain));
+  opacity: var(--alpha);
+  animation: rain-fall var(--dur) linear var(--delay) infinite;
+  will-change: transform;
+}
+
+@keyframes rain-fall {
+  from { transform: translate3d(0, -20vh, 0); }
+  to   { transform: translate3d(var(--drift), 120vh, 0); }
+}
+
 /* ─── Cursor tooltip ──────────────────────────────────── */
 
 .tooltip {
@@ -569,8 +689,12 @@ img {
   top: 0;
   left: 0;
   z-index: 100;
-  /* 260px is the narrowest width at which every blurb still fits on two
+  /* max-content, not the default shrink-to-fit: a fixed box with `left: X`
+     and `right: auto` is otherwise sized against the space left over to its
+     right, so tiles near the right edge got a narrower, taller tooltip.
+     260px is the narrowest width at which every blurb still fits on two
      lines; 272 leaves a little headroom. Widen if the copy gets longer. */
+  width: max-content;
   max-width: min(272px, calc(100vw - 24px));
   padding: 14px 16px;
   border-radius: var(--radius);
@@ -644,6 +768,9 @@ img {
   html { scroll-behavior: auto; }
   .reveal,
   .index__item { opacity: 1; transform: none; transition: none; }
+  .index__panel { transition: none; }
+  .rain { display: none; }
+  .rain-trigger { border-bottom: none; }
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
@@ -764,6 +891,15 @@ img {
 
   .index__info {
     padding-right: 8px;
+  }
+
+  .index__shot {
+    height: 132px;
+    min-width: 104px;
+  }
+
+  .index__toggle {
+    min-width: 92px;
   }
 
   .about__bio {

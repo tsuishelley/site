@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>雪</title>
+  <!-- A favicon renders standalone, with no page CSS around it, so it carries
+       its own theme switch: black ink on light browser chrome, white on dark.
+       Geometry exported from Figma (favicon-light-mode, node 158:929). -->
+  <style>
+    :root { --ink: #000; }
+    @media (prefers-color-scheme: dark) { :root { --ink: #fff; } }
+  </style>
+  <circle cx="128" cy="128" r="123.429" stroke="var(--ink)" stroke-width="9.14286"/>
+  <path fill="var(--ink)" d="M61.4676 48H193.396V59.0091H61.4676V48ZM72.1158 93.6606H111.279V103.226H72.1158V93.6606ZM68.1453 114.415H111.46V124.161H68.1453V114.415ZM142.682 114.415H187.26V124.161H142.682V114.415ZM142.682 93.6606H182.748V103.226H142.682V93.6606ZM71.0329 162.603H179.319V173.251H71.0329V162.603ZM63.8138 188.591H180.041V199.781H63.8138V188.591ZM120.303 52.151H133.658V129.034H120.303V52.151ZM66.882 136.795H186.538V207H173.183V147.984H66.882V136.795ZM51 71.2815H204.225V110.445H191.591V82.2906H63.2724V110.445H51V71.2815Z"/>
+</svg>

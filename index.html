@@ -8,7 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Inter:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <!-- The SVG recolours itself with the OS theme and stays crisp at any size;
+       the PNG pair is the fallback for browsers that will not take an SVG
+       favicon, picked by the same prefers-color-scheme query. -->
+  <link rel="icon" type="image/png" href="images/favicon-light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="images/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <script src="theme.js"></script>
 </head>
@@ -32,7 +37,7 @@
   <main>
 
     <section class="hero">
-      <h1 class="hero__text">Shelley Tsui is a product &amp; design lead based in rainy Seattle. Currently supporting at Curious.</h1>
+      <h1 class="hero__text">Shelley Tsui is a product &amp; design lead based in <span class="rain-trigger">rainy Seattle</span>. Currently supporting at Curious.</h1>
     </section>
 
     <div class="sections">
@@ -104,7 +109,14 @@
                 <h3 class="index__title">Microsoft Mixed Reality Dev Days</h3>
                 <p class="index__desc">Designing brand material for Mixed Reality Dev Days, a Microsoft hackathon.</p>
               </div>
-              <span class="pill-btn pill-btn--inert">Explore</span>
+              <button type="button" class="pill-btn index__toggle" aria-expanded="false" aria-controls="panel-mrdd">Expand</button>
+            </div>
+            <div class="index__panel" id="panel-mrdd" inert aria-hidden="true">
+              <div class="index__panel-inner">
+                <div class="index__carousel">
+                  <img class="index__shot" src="images/mrdd.png" alt="" loading="lazy" />
+                </div>
+              </div>
             </div>
           </li>
           <li class="index__item">
@@ -114,7 +126,14 @@
                 <h3 class="index__title">This Book Is Filled With Unsent Letters</h3>
                 <p class="index__desc">Compiling letters that were never sent or never had the chance to be.</p>
               </div>
-              <span class="pill-btn pill-btn--inert">Explore</span>
+              <button type="button" class="pill-btn index__toggle" aria-expanded="false" aria-controls="panel-unsent-letters">Expand</button>
+            </div>
+            <div class="index__panel" id="panel-unsent-letters" inert aria-hidden="true">
+              <div class="index__panel-inner">
+                <div class="index__carousel">
+                  <img class="index__shot" src="images/unsent-letters.png" alt="" loading="lazy" />
+                </div>
+              </div>
             </div>
           </li>
           <li class="index__item">
@@ -124,7 +143,14 @@
                 <h3 class="index__title">Antologi</h3>
                 <p class="index__desc">Supporting a startup in Google&#x27;s Area 120 focused on promoting better async work.</p>
               </div>
-              <span class="pill-btn pill-btn--inert">Explore</span>
+              <button type="button" class="pill-btn index__toggle" aria-expanded="false" aria-controls="panel-antologi">Expand</button>
+            </div>
+            <div class="index__panel" id="panel-antologi" inert aria-hidden="true">
+              <div class="index__panel-inner">
+                <div class="index__carousel">
+                  <img class="index__shot" src="images/antologi.png" alt="" loading="lazy" />
+                </div>
+              </div>
             </div>
           </li>
           <li class="index__item">
@@ -134,7 +160,14 @@
                 <h3 class="index__title">Rhododendron Species Botanical Garden</h3>
                 <p class="index__desc">Rebranding the Rhododendron Species Botanical Garden.</p>
               </div>
-              <span class="pill-btn pill-btn--inert">Explore</span>
+              <button type="button" class="pill-btn index__toggle" aria-expanded="false" aria-controls="panel-rsbg">Expand</button>
+            </div>
+            <div class="index__panel" id="panel-rsbg" inert aria-hidden="true">
+              <div class="index__panel-inner">
+                <div class="index__carousel">
+                  <img class="index__shot" src="images/rsbg.png" alt="" loading="lazy" />
+                </div>
+              </div>
             </div>
           </li>
           <li class="index__item">
@@ -144,7 +177,14 @@
                 <h3 class="index__title">Milo Treats</h3>
                 <p class="index__desc">Crafting visual identity for a DTC pet health startup.</p>
               </div>
-              <span class="pill-btn pill-btn--inert">Explore</span>
+              <button type="button" class="pill-btn index__toggle" aria-expanded="false" aria-controls="panel-milo">Expand</button>
+            </div>
+            <div class="index__panel" id="panel-milo" inert aria-hidden="true">
+              <div class="index__panel-inner">
+                <div class="index__carousel">
+                  <img class="index__shot" src="images/milo.png" alt="" loading="lazy" />
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -280,7 +320,7 @@
       <section id="about" class="about reveal">
         <div class="about__bio">
           <p>I'm a product and design lead working at the intersection of strategy, systems, and craft. Right now I'm at Curious, where I lead product and design across a portfolio of software companies. I've been fortunate to work across a wide range of companies and industries throughout my career. Seeing so many different ways of operating has taught me how to intuit what matters to a product's success and how to execute against it. AI is blurring the lines between disciplines and when you can build anything, what matters most is what you choose to build and how you grow it.</p>
-          <p>Outside of work, I'm learning how to garden while keeping up with two dogs and one very opinionated cat. I've also started incorporating more analog activities into my life: writing letters, typing on an actual typewriter, and filming the moments that matter on old camcorders. When things are moving so fast, it's important to stop and slow down every once in a while.</p>
+          <p>Outside of work, I'm learning how to garden while keeping up with two dogs and one very opinionated cat. I've also started incorporating more analog activities into my life: writing letters, typing on an actual typewriter, and filming the moments that matter on old camcorders.</p>
           <p>I'm based in rainy Seattle and work remotely. If you want to talk about a project, a role, or just compare notes on something you're building, I'd love to hear from you.</p>
         </div>
         <div class="about__links">
@@ -295,7 +335,7 @@
   </main>
 
   <footer class="bar bar--footer">
-    <span>Made with Figma/Claude Code, typeset in Source Serif 4 and Geist.</span>
+    <span>©️ 2026</span>
     <span><a class="bar__link" href="https://parks.wa.gov/find-parks/state-parks/dash-point-state-park"
             target="_blank" rel="noopener" aria-label="Dash Point State Park">47.3144&deg; N, 122.4062&deg; W</a></span>
   </footer>
@@ -442,6 +482,59 @@
     addEventListener('blur', hideTip);
     document.addEventListener('pointerleave', hideTip);
 
+    // Hovering "rainy Seattle" in the hero drizzles over the whole page. The
+    // drops are built once, on first hover, and animate purely in CSS after
+    // that; the layer never takes pointer events.
+    const rainTrigger = document.querySelector('.rain-trigger');
+
+    if (rainTrigger && !reducedMotion.matches) {
+      let rain = null;
+      const rand = (min, max) => min + Math.random() * (max - min);
+
+      function buildRain() {
+        const layer = document.createElement('div');
+        layer.className = 'rain';
+        layer.setAttribute('aria-hidden', 'true');
+
+        for (let i = 0; i < 80; i++) {
+          const drop = document.createElement('span');
+          drop.className = 'rain__drop';
+          // nearer drops are longer, faster and darker, which reads as depth
+          const depth = Math.random();
+          drop.style.setProperty('--x', `${rand(-5, 105)}vw`);
+          drop.style.setProperty('--len', `${rand(14, 28) + depth * 40}px`);
+          drop.style.setProperty('--dur', `${rand(1.5, 2.6) - depth * 0.6}s`);
+          // a negative delay starts each drop mid-fall, so the first frame
+          // already shows a full field rather than a line starting at the top
+          drop.style.setProperty('--delay', `${-rand(0, 3)}s`);
+          drop.style.setProperty('--drift', `${rand(10, 26)}px`);
+          drop.style.setProperty('--alpha', (0.25 + depth * 0.55).toFixed(2));
+          layer.append(drop);
+        }
+
+        document.body.append(layer);
+        return layer;
+      }
+
+      rainTrigger.addEventListener('pointerenter', e => {
+        if (e.pointerType === 'touch') return;
+        if (rain) {
+          rain.classList.add('rain--visible');
+          return;
+        }
+        rain = buildRain();
+        // let the layer paint at opacity 0 first, so it fades in rather than
+        // appearing at full strength on the frame it is added
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          rain.classList.add('rain--visible');
+        }));
+      });
+
+      rainTrigger.addEventListener('pointerleave', () => {
+        if (rain) rain.classList.remove('rain--visible');
+      });
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -466,6 +559,29 @@
 
     const indexSection = document.querySelector('.index');
     if (indexSection) itemObserver.observe(indexSection);
+
+    // Index rows open into a carousel of that project's images. The panel is
+    // inert while closed, so its images and link stay out of the tab order and
+    // the accessibility tree until it is actually on screen.
+    document.querySelectorAll('.index__toggle').forEach(btn => {
+      const item = btn.closest('.index__item');
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!item || !panel) return;
+
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.textContent = open ? 'Expand' : 'Collapse';
+        item.classList.toggle('index__item--open', !open);
+        panel.inert = open;
+        panel.setAttribute('aria-hidden', String(open));
+        // always reopen at the first shot rather than where it was left
+        if (!open) {
+          const carousel = panel.querySelector('.index__carousel');
+          if (carousel) carousel.scrollLeft = 0;
+        }
+      });
+    });
   </script>
 </body>
 </html>

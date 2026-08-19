@@ -12,6 +12,8 @@ Front matter keys:
     blurb     one line, used on the card and the index row
     card      image for the card and index thumbnail
     hero      full-width image at the top of the case study page
+    gallery   comma-separated images for the index row's expanding carousel
+              (falls back to `card` when it is not set)
     group     featured | index   (which homepage list it belongs to)
     order     sort position within that list
     draft     true = no page is generated and it is not linked anywhere
@@ -43,6 +45,7 @@ def parse(path):
         k, _, v = line.partition(":")
         meta[k.strip()] = v.strip()
     meta["slug"] = path.stem
+    meta["gallery"] = [s.strip() for s in meta.get("gallery", "").split(",") if s.strip()]
     meta["draft"] = meta.get("draft", "false").lower() == "true"
     meta["order"] = int(meta.get("order", 999))
     return meta, body
@@ -161,15 +164,47 @@ def featured_markup(items):
     return "\n".join(out)
 
 
+def index_panel(m):
+    """The row's drawer: a horizontal carousel of the project's images.
+
+    `inert` and aria-hidden keep the collapsed contents out of the tab order
+    and the accessibility tree; the toggle script clears them on open.
+    """
+    shots = m["gallery"] or ([m["card"]] if m.get("card") else [])
+    if not shots:
+        return ""
+    tiles = "\n".join(
+        f'                  <img class="index__shot" src="{esc(src)}" alt="" loading="lazy" />'
+        for src in shots
+    )
+    more = (
+        f'\n                <a class="index__more" href="{m["slug"]}.html">Read the case study</a>'
+        if not m["draft"]
+        else ""
+    )
+    return (
+        f'            <div class="index__panel" id="panel-{esc(m["slug"])}" inert aria-hidden="true">\n'
+        '              <div class="index__panel-inner">\n'
+        '                <div class="index__carousel">\n'
+        f"{tiles}\n"
+        "                </div>"
+        f"{more}\n"
+        "              </div>\n"
+        "            </div>\n"
+    )
+
+
 def index_markup(items):
     out = []
     for i, m in enumerate(items, 1):
-        # no page yet -> a plain span, so it looks right without pretending to
-        # be a control that does nothing when clicked or tabbed to
-        pill = (
-            '\n              <span class="pill-btn pill-btn--inert">Explore</span>'
-            if m["draft"]
-            else f'\n              <a href="{m["slug"]}.html" class="pill-btn">Explore</a>'
+        panel = index_panel(m)
+        # nothing to show -> a plain span, so the row keeps its shape without
+        # pretending to be a control that does nothing when clicked or tabbed to
+        control = (
+            '\n              <button type="button" class="pill-btn index__toggle"'
+            f' aria-expanded="false" aria-controls="panel-{esc(m["slug"])}">Expand</button>'
+            if panel
+            else '\n              <span class="pill-btn pill-btn--inert">Expand</span>'
         )
         out.append(
             '          <li class="index__item">\n'
@@ -179,8 +214,9 @@ def index_markup(items):
             f'                <h3 class="index__title">{esc(m["title"])}</h3>\n'
             f'                <p class="index__desc">{esc(m["blurb"])}</p>\n'
             "              </div>"
-            f"{pill}\n"
+            f"{control}\n"
             "            </div>\n"
+            f"{panel}"
             "          </li>"
         )
     return "\n".join(out)
