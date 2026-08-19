@@ -10,14 +10,14 @@
 }
 
 :root {
-  --color-bg: #ffffff;
+  --color-bg: #faf8f5;
   --color-text: #303030;
   --color-text-muted: #6b6b6b;
   --color-pill-bg: rgba(48, 48, 48, 0.05);
   --color-pill-bg-hover: rgba(48, 48, 48, 0.1);
   --color-placeholder: #d9d9d9;
   --color-divider: rgba(48, 48, 48, 0.15);
-  --color-tile: #f5f5f5;
+  --color-tile: #f2efea;
 
   --font: 'Geist', sans-serif;
   --font-serif: 'Source Serif 4', 'Source Serif Pro', serif;
@@ -32,7 +32,7 @@
   --logo-color: var(--color-text);
 
   --bar-bg: var(--color-bg);
-  --bar-bg-glass: rgba(255, 255, 255, 0.62);
+  --bar-bg-glass: rgba(250, 248, 245, 0.62);
   --bar-blur: none;
 }
 
@@ -182,16 +182,16 @@ img {
 /* ─── Hero ────────────────────────────────────────────── */
 
 .hero {
-  padding: 202px var(--page-px) 0;
+  padding: 200px var(--page-px) 0;
 }
 
 .hero__text {
   font-family: var(--font-serif);
-  font-size: 48px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1.15;
   color: var(--color-text);
-  max-width: 865px;
+  max-width: 600px;
 }
 
 /* ─── Sections wrapper ────────────────────────────────── */
@@ -418,13 +418,31 @@ img {
 
 .index__thumb {
   /* keeps the 136:82 proportion the thumbnails were cropped to */
-  width: 180px;
-  height: 109px;
+  position: relative;
+  width: 240px;
+  height: 145px;
   border-radius: var(--radius);
   background-color: var(--color-placeholder);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* The image lives on its own layer so the blur can be clipped. Blurring the
+   thumb itself would feather its rounded edges instead of its contents; the
+   slight scale pushes the soft edge out past the clip. */
+.index__thumb-img {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  flex-shrink: 0;
+  filter: blur(5px);
+  transform: scale(1.12);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.index__thumb:hover .index__thumb-img {
+  filter: blur(0);
+  transform: scale(1);
 }
 
 .index__info {
@@ -487,18 +505,7 @@ img {
 .quote__author {
   display: flex;
   align-items: center;
-  gap: 16px;
   margin-top: auto;
-}
-
-.quote__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--color-placeholder);
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
 }
 
 .quote__who {
@@ -680,6 +687,7 @@ img {
   html { scroll-behavior: auto; }
   .reveal,
   .index__item { opacity: 1; transform: none; transition: none; }
+  .index__thumb-img { transition: none; }
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
@@ -692,10 +700,6 @@ img {
 
   .hero {
     padding-top: 150px;
-  }
-
-  .hero__text {
-    font-size: 40px;
   }
 
   .feature {
@@ -715,10 +719,6 @@ img {
 
   .hero {
     padding-top: 96px;
-  }
-
-  .hero__text {
-    font-size: 30px;
   }
 
   .feature {
@@ -783,10 +783,6 @@ img {
 
   .hero {
     padding-top: 64px;
-  }
-
-  .hero__text {
-    font-size: 24px;
   }
 
   .sections {

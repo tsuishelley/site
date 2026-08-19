@@ -176,7 +176,9 @@ def index_markup(items):
             '            <div class="index__row">\n'
             '              <div class="index__lead">\n'
             f'                <span class="index__num">{i:02d}</span>\n'
-            f"                <div class=\"index__thumb\" style=\"background-image:url('{m['card']}')\"></div>\n"
+            f"                <div class=\"index__thumb\">\n"
+            f"                  <div class=\"index__thumb-img\" style=\"background-image:url('{m['card']}')\"></div>\n"
+            f"                </div>\n"
             "              </div>\n"
             '              <div class="index__info">\n'
             f'                <h3 class="index__title">{esc(m["title"])}</h3>\n'
