@@ -200,9 +200,14 @@ def main():
 
     built = 0
     for meta, body in projects:
+        page = ROOT / f"{meta['slug']}.html"
         if meta["draft"]:
+            # only ever removes a page this script would itself generate
+            if page.name != "index.html" and page.exists():
+                page.unlink()
+                print(f"removed stale page: {page.name}")
             continue
-        (ROOT / f"{meta['slug']}.html").write_text(render_page(meta, body, template))
+        page.write_text(render_page(meta, body, template))
         built += 1
 
     def group(name):

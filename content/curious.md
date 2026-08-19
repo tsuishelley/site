@@ -9,7 +9,7 @@ role: Product & Design Lead
 company: Curious Holdings
 timeline: 2023–Present
 scope: Strategy, Systems, IC Design
-draft: false
+draft: true
 ---
 
 ## Overview

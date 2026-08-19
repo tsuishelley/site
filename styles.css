@@ -336,7 +336,7 @@ img {
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--color-placeholder);
-  aspect-ratio: 608 / 485;
+  aspect-ratio: 1786 / 1041; /* matches the source files, so cover crops nothing */
 }
 
 .feature__image {
