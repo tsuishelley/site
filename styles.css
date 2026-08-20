@@ -55,6 +55,17 @@
   --bar-bg-glass: rgba(20, 20, 20, 0.6);
 }
 
+/* The theme swap has to land in one frame. Anything still transitioning a
+   themed colour would otherwise animate from the old theme's value to the new
+   one while the page behind it changes instantly — most visibly the sticky
+   bar, which reads as a flicker. theme.js holds this class across the swap. */
+:root.theme-switching,
+:root.theme-switching *,
+:root.theme-switching *::before,
+:root.theme-switching *::after {
+  transition: none !important;
+}
+
 [data-theme="dark"] ::selection {
   background: #e6e6e6;
   color: #141414;
@@ -235,6 +246,11 @@ img {
   vertical-align: super;
   margin-left: 4px;
 }
+
+/* brackets live in CSS so every count gets them, including the Index heading
+   that build.py writes */
+.s-title__count::before { content: "("; }
+.s-title__count::after  { content: ")"; }
 
 /* ─── Pill button ─────────────────────────────────────── */
 
@@ -468,9 +484,9 @@ img {
 /* fixed height, natural width: the shots stay uncropped whatever their shape.
    min-width holds a tile's worth of space while a lazy image is still loading */
 .index__shot {
-  height: 180px;
+  height: 280px;
   width: auto;
-  min-width: 140px;
+  min-width: 210px;
   flex-shrink: 0;
   border-radius: var(--radius);
   background: var(--color-placeholder);
@@ -513,7 +529,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 506px;
+  width: 320px;
   flex-shrink: 0;
   padding: 15px;
   background: var(--color-tile);
@@ -682,6 +698,141 @@ img {
   to   { transform: translate3d(var(--drift), 120vh, 0); }
 }
 
+/* ─── Tilted gallery ──────────────────────────────────── */
+/* A fanned carousel: the stage is exactly one card wide, so its neighbours
+   spill outside it and are clipped at the page edge. The script sets only
+   `--active` on the section; each slide's own `--i` does the rest, so moving
+   the carousel is a single custom property write and CSS animates the lot. */
+
+.gallery {
+  --slide-w: 200px;
+  --fan: 60deg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  /* full-bleed so the fan is cut off by the page edge, never mid-card, and
+     the spilling neighbours can't widen the document */
+  margin-inline: calc(var(--page-px) * -1);
+  padding-inline: var(--page-px);
+  overflow: hidden;
+  /* same linear fade the marquees use, so the fan dissolves at the page edge
+     instead of being cut off by the overflow clip */
+  --gallery-fade: 120px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--gallery-fade), #000 calc(100% - var(--gallery-fade)), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 var(--gallery-fade), #000 calc(100% - var(--gallery-fade)), transparent);
+}
+
+.gallery__stage {
+  width: var(--slide-w);
+}
+
+.gallery__track {
+  display: flex;
+  width: max-content;
+  transform: translateX(calc(var(--active, 0) * var(--slide-w) * -1));
+  transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+/* perspective sits on the slide, not the track, so every card turns about its
+   own vanishing point and the fan stays even across the row */
+.gallery__slide {
+  flex: 0 0 var(--slide-w);
+  perspective: 800px;
+}
+
+.gallery__card {
+  cursor: pointer;
+  transform: rotateY(calc((var(--active, 0) - var(--i)) * var(--fan)));
+  scale: 0.85;
+  transition: transform 1s cubic-bezier(0.34, 1.1, 0.64, 1),
+              scale 1s cubic-bezier(0.34, 1.1, 0.64, 1);
+  will-change: transform, scale;
+}
+
+.gallery__slide--active .gallery__card {
+  scale: 1;
+  cursor: default;
+}
+
+.gallery__img {
+  width: var(--slide-w);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--color-placeholder);
+  user-select: none;
+}
+
+/* the control pill reuses the bar's frosted plate */
+.gallery__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 100px;
+  background: var(--color-pill-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+          backdrop-filter: saturate(180%) blur(20px);
+}
+
+.gallery__arrow {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.gallery__arrow svg {
+  width: 17px;
+  height: 17px;
+}
+
+.gallery__arrow:hover:not(:disabled) {
+  background: var(--color-pill-bg-hover);
+}
+
+.gallery__arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.gallery__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.gallery__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 100px;
+  background: var(--color-text-muted);
+  opacity: 0.35;
+  cursor: pointer;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery__dot--active {
+  width: 24px;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__track,
+  .gallery__card { transition: none; }
+}
+
 /* ─── Cursor tooltip ──────────────────────────────────── */
 
 .tooltip {
@@ -813,7 +964,7 @@ img {
   }
 
   .quote {
-    width: 440px;
+    width: 290px;
   }
 
   .index__row {
@@ -894,8 +1045,14 @@ img {
   }
 
   .index__shot {
-    height: 132px;
-    min-width: 104px;
+    height: 190px;
+    min-width: 140px;
+  }
+
+  .gallery {
+    --slide-w: 130px;
+    --gallery-fade: 48px;
+    gap: 26px;
   }
 
   .index__toggle {

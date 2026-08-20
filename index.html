@@ -319,7 +319,8 @@
       <!-- About -->
       <section id="about" class="about reveal">
         <div class="about__bio">
-          <p>I'm a product and design lead working at the intersection of strategy, systems, and craft. Right now I'm at Curious, where I lead product and design across a portfolio of software companies. I've been fortunate to work across a wide range of companies and industries throughout my career. Seeing so many different ways of operating has taught me how to intuit what matters to a product's success and how to execute against it. AI is blurring the lines between disciplines and when you can build anything, what matters most is what you choose to build and how you grow it.</p>
+          <p>I'm a product and design lead working at the intersection of strategy, systems, and craft. Right now I'm at Curious, where I lead product and design across a portfolio of software companies.</p>
+          <p>I've been fortunate to work across a wide range of companies and industries throughout my career. Seeing so many different ways of operating has taught me how to intuit what matters to a product's success and how to execute against it. AI is blurring the lines between disciplines and when you can build anything, what matters most is what you choose to build and how you grow it.</p>
           <p>Outside of work, I'm learning how to garden while keeping up with two dogs and one very opinionated cat. I've also started incorporating more analog activities into my life: writing letters, typing on an actual typewriter, and filming the moments that matter on old camcorders.</p>
           <p>I'm based in rainy Seattle and work remotely. If you want to talk about a project, a role, or just compare notes on something you're building, I'd love to hear from you.</p>
         </div>
@@ -327,6 +328,64 @@
           <a href="mailto:tsuishelley@gmail.com" class="pill-btn">Email</a>
           <a href="https://www.linkedin.com/in/shelley-tsui/" class="pill-btn" target="_blank" rel="noopener">LinkedIn</a>
           <a href="#" class="pill-btn">Resume</a>
+        </div>
+      </section>
+
+      <!-- Outside work ─ a tilted carousel. Each slide carries its own `--i`; the
+           script only ever sets `--active` on the section and CSS derives every
+           card's rotation from the difference. -->
+      <section id="life" class="gallery reveal" aria-roledescription="carousel"
+               aria-label="Photos from outside work" data-start="2">
+        <div class="gallery__stage">
+          <div class="gallery__track">
+          <div class="gallery__slide" style="--i: 0">
+            <div class="gallery__card">
+              <img class="gallery__img" src="images/japan-pic.png" alt="japan" loading="lazy" draggable="false" />
+            </div>
+          </div>
+          <div class="gallery__slide" style="--i: 1">
+            <div class="gallery__card">
+              <img class="gallery__img" src="images/blueberries.png" alt="blueberries on the bush" loading="lazy" draggable="false" />
+            </div>
+          </div>
+          <div class="gallery__slide" style="--i: 2">
+            <div class="gallery__card">
+              <img class="gallery__img" src="images/daisy.png" alt="a dog with a daisy" loading="lazy" draggable="false" />
+            </div>
+          </div>
+          <div class="gallery__slide" style="--i: 3">
+            <div class="gallery__card">
+              <img class="gallery__img" src="images/mei-and-yuna.png" alt="mei and yuna on the beach" loading="lazy" draggable="false" />
+            </div>
+          </div>
+          <div class="gallery__slide" style="--i: 4">
+            <div class="gallery__card">
+              <img class="gallery__img" src="images/totoro.png" alt="totoro" loading="lazy" draggable="false" />
+            </div>
+          </div>
+          <div class="gallery__slide" style="--i: 5">
+            <div class="gallery__card">
+              <img class="gallery__img" src="images/ferry.png" alt="a puget sound ferry" loading="lazy" draggable="false" />
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div class="gallery__controls">
+          <button type="button" class="gallery__arrow" data-dir="-1" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+          <div class="gallery__dots">
+            <button type="button" class="gallery__dot" aria-label="Go to photo 1"></button>
+            <button type="button" class="gallery__dot" aria-label="Go to photo 2"></button>
+            <button type="button" class="gallery__dot" aria-label="Go to photo 3"></button>
+            <button type="button" class="gallery__dot" aria-label="Go to photo 4"></button>
+            <button type="button" class="gallery__dot" aria-label="Go to photo 5"></button>
+            <button type="button" class="gallery__dot" aria-label="Go to photo 6"></button>
+          </div>
+          <button type="button" class="gallery__arrow" data-dir="1" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
         </div>
       </section>
 
@@ -534,6 +593,56 @@
         if (rain) rain.classList.remove('rain--visible');
       });
     }
+
+    // Tilted gallery. Everything visual is CSS: the script only clamps the
+    // index, writes `--active`, and marks which slide is the current one.
+    document.querySelectorAll('.gallery').forEach(gallery => {
+      const slides = [...gallery.querySelectorAll('.gallery__slide')];
+      const dots = [...gallery.querySelectorAll('.gallery__dot')];
+      const arrows = [...gallery.querySelectorAll('.gallery__arrow')];
+      if (!slides.length) return;
+
+      let active = -1;
+
+      function show(next) {
+        next = Math.max(0, Math.min(slides.length - 1, next));
+        if (next === active) return;
+        active = next;
+
+        gallery.style.setProperty('--active', active);
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('gallery__slide--active', i === active);
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('gallery__dot--active', i === active);
+          dot.setAttribute('aria-current', i === active ? 'true' : 'false');
+        });
+        arrows.forEach(arrow => {
+          const dir = Number(arrow.dataset.dir);
+          arrow.disabled = dir < 0 ? active === 0 : active === slides.length - 1;
+        });
+      }
+
+      gallery.addEventListener('click', e => {
+        const arrow = e.target.closest('.gallery__arrow');
+        if (arrow) return show(active + Number(arrow.dataset.dir));
+
+        const dot = e.target.closest('.gallery__dot');
+        if (dot) return show(dots.indexOf(dot));
+
+        // clicking a fanned neighbour brings it to the front
+        const slide = e.target.closest('.gallery__slide');
+        if (slide) show(slides.indexOf(slide));
+      });
+
+      gallery.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        show(active + (e.key === 'ArrowLeft' ? -1 : 1));
+      });
+
+      show(Number(gallery.dataset.start) || 0);
+    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
